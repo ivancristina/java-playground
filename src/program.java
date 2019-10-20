@@ -18,35 +18,38 @@ public class program {      // classe principale
 
 class setup {
 
+    // private per essere chiamabili solo all'interno della classe;
     // static per essere chiamabili in tutta la classe;
     // final a causa dello switch che necessita di variabili costanti
-    static final String funz1 = "print";
-    static final String funz2 = "addizione";
-    static final String funz3 = "sottrazione";
-    static final String funz4 = "moltiplicazione";
-    static final String funz5 = "divisione";
-    static final String funz6 = "console";
-    static final String funz7 = "ifcondititon";
-    static final String funz8 = "lunghezza";
+    private static final String funz1 = "print";
+    private static final String funz2 = "addizione";
+    private static final String funz3 = "sottrazione";
+    private static final String funz4 = "moltiplicazione";
+    private static final String funz5 = "divisione";
+    private static final String funz6 = "console";
+    private static final String funz7 = "ifcondititon";
+    private static final String funz8 = "compara";
 
-    static final String funze = "esci";
+    private static final String funze = "esci";
 
 
     static void help() {
 
+        String spazi = "                   ";
+
         System.out.println("Elenco delle funzioni:");
         System.out.print("\n");
         // Eventualmente fisserò numero di spazi tramite differenza lenght parole
-        System.out.println("1: " + funz1 + "              " + "Test di print");
-        System.out.println("2: " + funz2 + "          " + "Addizione");
-        System.out.println("3: " + funz3 + "        " + "Sottrazione");
-        System.out.println("4: " + funz4 + "    " + "Moltiplicazione");
-        System.out.println("5: " + funz5 + "          " + "Divisione");
-        System.out.println("6: " + funz6 + "            " + "RW Console");
-        System.out.println("7: " + funz7 + "       " + "Esegui una condizione SE");
-        System.out.println("8: " + funz8 + "          " + "Verifica lunghezza parola");
+        System.out.println("1: " + funz1 + spazi.substring(0, spazi.length() - funz1.length()) + "Test di print");
+        System.out.println("2: " + funz2 + spazi.substring(0, spazi.length() - funz2.length()) + "Addizione");
+        System.out.println("3: " + funz3 + spazi.substring(0, spazi.length() - funz3.length()) + "Sottrazione");
+        System.out.println("4: " + funz4 + spazi.substring(0, spazi.length() - funz4.length()) + "Moltiplicazione");
+        System.out.println("5: " + funz5 + spazi.substring(0, spazi.length() - funz5.length()) + "Divisione");
+        System.out.println("6: " + funz6 + spazi.substring(0, spazi.length() - funz6.length()) + "RW Console");
+        System.out.println("7: " + funz7 + spazi.substring(0, spazi.length() - funz7.length()) + "Esegui una condizione SE");
+        System.out.println("8: " + funz8 + spazi.substring(0, spazi.length() - funz8.length()) + "Compara due numeri");
 
-        System.out.println("E: " + funze + "               " + "Chiudi il programma");
+        System.out.println("E: " + funze + spazi.substring(0, spazi.length() - funze.length()) + "Chiudi il programma");
         System.out.print("\n");
         setup.menu();
     }
@@ -128,7 +131,7 @@ class setup {
             case funz8:
             case "8":
                 System.out.println("Apro la funzione: " + funz8);
-                funzioni.lunghezza();
+                funzioni.compara();
                 break;
             case funze:
             case "E":
@@ -187,7 +190,7 @@ class funzioni {
     static void print() {
 
         System.out.println("*************");
-        System.out.println("Riga di testo");
+        System.out.println("\"Escape room\"");
         System.out.println("*************");
         setup.fine();
     }
@@ -276,14 +279,25 @@ class funzioni {
 
     }
 
-    static void lunghezza() {
-        if (input == "n"){
-            System.out.println("Sei un poraccio");
-        }if (input == "s"){
-            System.out.println("Sei un poraccio lo stesso");
+    static void compara() {
+        funzioni.read();
+
+        if (x>y){
+            System.out.println("Comparazione: " + x + " è maggiore di " + y + "!");
         }else{
-            System.out.println("Non ho capito. Rispondi con \"s\" o \"n\"");
+            System.out.println("Comparazione: " + x + " è minore di " + y + "!");
         }
+        if (x>0){
+            System.out.println("X: " + x + " è positivo!");
+        }else{
+            System.out.println("X: " + x + " è negativo!");
+        }
+        if (y>0){
+            System.out.println("Y: " + y + " è positivo!");
+        }else{
+            System.out.println("Y: " + y + " è negativo!");
+        }
+        setup.fine();
     }
 
     public static void input() {
@@ -318,7 +332,7 @@ class funzioni {
         BufferedReader yread = new BufferedReader(new InputStreamReader(System.in));
         String y1 = null;
         try {
-            y1 = xread.readLine();
+            y1 = yread.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
