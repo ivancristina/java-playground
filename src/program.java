@@ -29,6 +29,7 @@ class setup {
     private static final String funz6 = "console";
     private static final String funz7 = "ifcondititon";
     private static final String funz8 = "compara";
+    private static final String funz9 = "primo";
 
     private static final String funze = "esci";
 
@@ -48,6 +49,7 @@ class setup {
         System.out.println("6: " + funz6 + spazi.substring(0, spazi.length() - funz6.length()) + "RW Console");
         System.out.println("7: " + funz7 + spazi.substring(0, spazi.length() - funz7.length()) + "Esegui una condizione SE");
         System.out.println("8: " + funz8 + spazi.substring(0, spazi.length() - funz8.length()) + "Compara due numeri");
+        System.out.println("9: " + funz9 + spazi.substring(0, spazi.length() - funz9.length()) + "Verifica numero primo");
 
         System.out.println("E: " + funze + spazi.substring(0, spazi.length() - funze.length()) + "Chiudi il programma");
         System.out.print("\n");
@@ -132,6 +134,11 @@ class setup {
             case "8":
                 System.out.println("Apro la funzione: " + funz8);
                 funzioni.compara();
+                break;
+            case funz9:
+            case "9":
+                System.out.println("Apro la funzione: " + funz8);
+                funzioni.primo();
                 break;
             case funze:
             case "E":
@@ -297,6 +304,30 @@ class funzioni {
         }else{
             System.out.println("Y: " + y + " è negativo!");
         }
+        setup.fine();
+    }
+
+    static void primo() {
+        System.out.print("\n");
+        System.out.print("Digita un numero:");
+        System.out.print("\n");
+        funzioni.input();
+
+        int numero = Integer.parseInt(input);
+        boolean primo = false;
+        for(int i = 2; i <= numero/2; ++i)
+        {
+            // condition for nonprime number
+            if(numero % i == 0)
+            {
+                primo = true;
+                break;
+            }
+        }
+        if (!primo)
+            System.out.println(numero + " è un numero primo!");
+        else
+            System.out.println(numero + " non è un numero primo!");
         setup.fine();
     }
 
