@@ -316,8 +316,9 @@ class funzioni {
         int numero = Integer.parseInt(input);
         boolean primo = false;
         for(int i = 2; i <= numero/2; ++i)
+        // Verifica tutti i possibili divisori (fino alla metà del numero stesso) in ciclo for
         {
-            // condition for nonprime number
+            // Verifica dell'operatore residuo. Se il resto è 0, il numero è primo
             if(numero % i == 0)
             {
                 primo = true;
