@@ -4,6 +4,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Random;
 
 
 public class program {      // classe principale
@@ -30,6 +31,7 @@ class setup {
     private static final String funz7 = "ifcondititon";
     private static final String funz8 = "compara";
     private static final String funz9 = "primo";
+    private static final String funz10 = "rand_array";
 
     private static final String funze = "esci";
 
@@ -41,17 +43,18 @@ class setup {
         System.out.println("Elenco delle funzioni:");
         System.out.print("\n");
         // Eventualmente fisserò numero di spazi tramite differenza lenght parole
-        System.out.println("1: " + funz1 + spazi.substring(0, spazi.length() - funz1.length()) + "Test di print");
-        System.out.println("2: " + funz2 + spazi.substring(0, spazi.length() - funz2.length()) + "Addizione");
-        System.out.println("3: " + funz3 + spazi.substring(0, spazi.length() - funz3.length()) + "Sottrazione");
-        System.out.println("4: " + funz4 + spazi.substring(0, spazi.length() - funz4.length()) + "Moltiplicazione");
-        System.out.println("5: " + funz5 + spazi.substring(0, spazi.length() - funz5.length()) + "Divisione");
-        System.out.println("6: " + funz6 + spazi.substring(0, spazi.length() - funz6.length()) + "RW Console");
-        System.out.println("7: " + funz7 + spazi.substring(0, spazi.length() - funz7.length()) + "Esegui una condizione SE");
-        System.out.println("8: " + funz8 + spazi.substring(0, spazi.length() - funz8.length()) + "Compara due numeri");
-        System.out.println("9: " + funz9 + spazi.substring(0, spazi.length() - funz9.length()) + "Verifica numero primo");
+        System.out.println("1:  " + funz1 + spazi.substring(0, spazi.length() - funz1.length()) + "Test di print");
+        System.out.println("2:  " + funz2 + spazi.substring(0, spazi.length() - funz2.length()) + "Addizione");
+        System.out.println("3:  " + funz3 + spazi.substring(0, spazi.length() - funz3.length()) + "Sottrazione");
+        System.out.println("4:  " + funz4 + spazi.substring(0, spazi.length() - funz4.length()) + "Moltiplicazione");
+        System.out.println("5:  " + funz5 + spazi.substring(0, spazi.length() - funz5.length()) + "Divisione");
+        System.out.println("6:  " + funz6 + spazi.substring(0, spazi.length() - funz6.length()) + "RW Console");
+        System.out.println("7:  " + funz7 + spazi.substring(0, spazi.length() - funz7.length()) + "Esegui una condizione SE");
+        System.out.println("8:  " + funz8 + spazi.substring(0, spazi.length() - funz8.length()) + "Compara due numeri");
+        System.out.println("9:  " + funz9 + spazi.substring(0, spazi.length() - funz9.length()) + "Verifica numero primo");
+        System.out.println("10: " + funz10 + spazi.substring(0, spazi.length() - funz10.length()) + "Lancia una moneta");
 
-        System.out.println("E: " + funze + spazi.substring(0, spazi.length() - funze.length()) + "Chiudi il programma");
+        System.out.println("E:  " + funze + spazi.substring(0, spazi.length() - funze.length()) + "Chiudi il programma");
         System.out.print("\n");
         setup.menu();
     }
@@ -137,8 +140,13 @@ class setup {
                 break;
             case funz9:
             case "9":
-                System.out.println("Apro la funzione: " + funz8);
+                System.out.println("Apro la funzione: " + funz9);
                 funzioni.primo();
+                break;
+            case funz10:
+            case "10":
+                System.out.println("Apro la funzione: " + funz10);
+                funzioni.rand_array();
                 break;
             case funze:
             case "E":
@@ -157,7 +165,7 @@ class setup {
 
     static void fine() {        // si avvia alla fine di ogni funzione
         System.out.print("\n");
-        System.out.print("Premi m per tornare al menu, u per uscire");
+        System.out.print("Premi m per tornare al menu, e per uscire");
         System.out.print("\n");
         System.out.print("\n");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -171,7 +179,7 @@ class setup {
         assert scelta != null;
         if(scelta.equals("m")){
             setup.help();
-        }else if(scelta.equals("u")){
+        }else if(scelta.equals("e")){
             setup.esci();
         }else{
             System.out.println("Scelta non contemplata. Riapro il menu");
@@ -237,8 +245,10 @@ class funzioni {
         funzioni.read();
 
         double s = x / y;
+        int t = (int) (x / y);
+        int resto = (int) (x % y);
 
-        System.out.println("Divisione: di " + x + " e " + y +" risulta " + s + "!");
+        System.out.println("Divisione: di " + x + " e " + y +" risulta " + s + ", oppure " + t + " con resto di " + resto + "!");
         setup.fine();
 
     }
@@ -304,6 +314,42 @@ class funzioni {
         }else{
             System.out.println("Y: " + y + " è negativo!");
         }
+        setup.fine();
+    }
+
+    static void rand_array() {
+        System.out.println("Inserisci il numero di lanci");
+        System.out.print("\n");
+        funzioni.input();
+        System.out.print("\n");
+
+        int lanci = Integer.parseInt(input);
+        int conteggio = 0;
+
+        System.out.println("Lancio una moneta " + lanci + " volte");
+        System.out.print("\n");
+
+        Random valori = new Random();       // inizializzo il generatore
+
+        for (int i = 0; i < lanci; i++){
+            boolean faccia = valori.nextBoolean();      // testa o croce è un valore booleano
+            if(faccia){             // se il valore è positivo
+                System.out.println("Testa");
+                conteggio++;        // aumenta il contatore
+            }else if (!faccia){     // se il valore è negativo
+                System.out.println("Croce");
+            }
+        }
+
+        int teste = conteggio;
+        int croci = (lanci-conteggio);
+        double percT = (100 * (double) teste) / lanci;  // proporzione
+        double percC = (100 * (double) croci) / lanci;
+
+        System.out.print("\n");
+        System.out.println("Teste: " + teste + ", Croci: " + croci);
+        System.out.println("Percentuale T: " + percT + "%, Percentuale C: " + percC + "%");
+
         setup.fine();
     }
 
