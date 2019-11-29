@@ -32,6 +32,8 @@ class setup {
     private static final String funz8 = "compara";
     private static final String funz9 = "primo";
     private static final String funz10 = "rand_array";
+    private static final String funz11 = "log_curve";
+    private static final String funz12 = "cifrario";
 
     private static final String funze = "esci";
 
@@ -53,6 +55,8 @@ class setup {
         System.out.println("8:  " + funz8 + spazi.substring(0, spazi.length() - funz8.length()) + "Compara due numeri");
         System.out.println("9:  " + funz9 + spazi.substring(0, spazi.length() - funz9.length()) + "Verifica numero primo");
         System.out.println("10: " + funz10 + spazi.substring(0, spazi.length() - funz10.length()) + "Lancia una moneta");
+        System.out.println("11: " + funz11 + spazi.substring(0, spazi.length() - funz11.length()) + "Curva logaritmica");
+        System.out.println("12: " + funz12 + spazi.substring(0, spazi.length() - funz12.length()) + "Cifrario di Cesare");
 
         System.out.println("E:  " + funze + spazi.substring(0, spazi.length() - funze.length()) + "Chiudi il programma");
         System.out.print("\n");
@@ -148,6 +152,16 @@ class setup {
                 System.out.println("Apro la funzione: " + funz10);
                 funzioni.rand_array();
                 break;
+            case funz11:
+            case "11":
+                System.out.println("Apro la funzione: " + funz11);
+                funzioni.log_curve();
+                break;
+            case funz12:
+            case "12":
+                System.out.println("Apro la funzione: " + funz12);
+                funzioni.cifrario();
+                break;
             case funze:
             case "E":
             case "e":
@@ -205,7 +219,7 @@ class funzioni {
     static void print() {
 
         System.out.println("*************");
-        System.out.println("\"Escape room\"");
+        System.out.println("\"Escape room\"\n    Hello");
         System.out.println("*************");
         setup.fine();
     }
@@ -272,7 +286,13 @@ class funzioni {
         }else{      // Substring se parola con più di 5(+1) caratteri
             System.out.println("Per Substring, scegli una parola con 5 o più caratteri");
         }
+
         System.out.println("Contiene lettera \"a\": " + input.contains("a"));
+
+        for (int i = 0; i < input.length(); i++){
+            System.out.println("La lettera alla posizione " + i + " è " + input.substring(i,i+1) );
+        }
+
         setup.fine();
 
     }
@@ -317,6 +337,31 @@ class funzioni {
         setup.fine();
     }
 
+    static void primo() {
+        System.out.print("\n");
+        System.out.print("Digita un numero:");
+        System.out.print("\n");
+        funzioni.input();
+
+        int numero = Integer.parseInt(input);
+        boolean primo = false;
+        for(int i = 2; i <= numero/2; ++i)
+        // Verifica tutti i possibili divisori (fino alla metà del numero stesso) in ciclo for
+        {
+            // Verifica dell'operatore residuo. Se il resto è 0, il numero è primo
+            if(numero % i == 0)
+            {
+                primo = true;
+                break;
+            }
+        }
+        if (!primo)
+            System.out.println(numero + " è un numero primo!");
+        else
+            System.out.println(numero + " non è un numero primo!");
+        setup.fine();
+    }
+
     static void rand_array() {
         System.out.println("Inserisci il numero di lanci");
         System.out.print("\n");
@@ -353,28 +398,45 @@ class funzioni {
         setup.fine();
     }
 
-    static void primo() {
+    static void log_curve() {
         System.out.print("\n");
         System.out.print("Digita un numero:");
         System.out.print("\n");
         funzioni.input();
 
-        int numero = Integer.parseInt(input);
-        boolean primo = false;
-        for(int i = 2; i <= numero/2; ++i)
-        // Verifica tutti i possibili divisori (fino alla metà del numero stesso) in ciclo for
-        {
-            // Verifica dell'operatore residuo. Se il resto è 0, il numero è primo
-            if(numero % i == 0)
-            {
-                primo = true;
-                break;
-            }
+        // to be completed later
+
+        setup.fine();
+    }
+
+    static void cifrario() {
+        System.out.print("\n");
+        System.out.print("Digita una frase:");
+        System.out.print("\n");
+        funzioni.input();
+        String frase = input;
+
+        System.out.print("\n");
+        System.out.print("Inserisci il k:");
+        System.out.print("\n");
+        funzioni.input();
+        int k = Integer.parseInt(input);
+
+        String finale = null;
+        String part = "";
+
+        for (int i = 0; i < frase.length(); i++) {
+            char character = frase.charAt(i);
+            int ascii = (int) character;
+            int newascii = ascii + k;
+            String l = Character.toString(newascii);
+            finale = (part + l);
+            part = finale;
         }
-        if (!primo)
-            System.out.println(numero + " è un numero primo!");
-        else
-            System.out.println(numero + " non è un numero primo!");
+
+        System.out.print("\n");
+        System.out.println("La frase cifrata con k=" + k + " è: \"" + finale + "\"");
+
         setup.fine();
     }
 
