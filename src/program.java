@@ -33,7 +33,8 @@ class setup {
     private static final String funz9 = "primo";
     private static final String funz10 = "rand_array";
     private static final String funz11 = "log_curve";
-    private static final String funz12 = "cifrario";
+    private static final String funz12 = "cesare";
+    private static final String funz13 = "vigenere";
 
     private static final String funze = "esci";
 
@@ -57,6 +58,7 @@ class setup {
         System.out.println("10: " + funz10 + spazi.substring(0, spazi.length() - funz10.length()) + "Lancia una moneta");
         System.out.println("11: " + funz11 + spazi.substring(0, spazi.length() - funz11.length()) + "Curva logaritmica");
         System.out.println("12: " + funz12 + spazi.substring(0, spazi.length() - funz12.length()) + "Cifrario di Cesare");
+        System.out.println("13: " + funz13 + spazi.substring(0, spazi.length() - funz13.length()) + "Cifrario di Vigenere");
 
         System.out.println("E:  " + funze + spazi.substring(0, spazi.length() - funze.length()) + "Chiudi il programma");
         System.out.print("\n");
@@ -160,7 +162,12 @@ class setup {
             case funz12:
             case "12":
                 System.out.println("Apro la funzione: " + funz12);
-                funzioni.cifrario();
+                funzioni.cesare();
+                break;
+            case funz13:
+            case "13":
+                System.out.println("Apro la funzione: " + funz13);
+                funzioni.vigenere();
                 break;
             case funze:
             case "E":
@@ -409,7 +416,7 @@ class funzioni {
         setup.fine();
     }
 
-    static void cifrario() {
+    static void cesare() {
         System.out.print("\n");
         System.out.print("Digita una frase:");
         System.out.print("\n");
@@ -417,10 +424,25 @@ class funzioni {
         String frase = input;
 
         System.out.print("\n");
-        System.out.print("Inserisci il k:");
+        System.out.print("Inserisci l'offeset k:");
         System.out.print("\n");
         funzioni.input();
         int k = Integer.parseInt(input);
+
+        System.out.print("\n");
+        System.out.print("Scegli se cifrare (c) o decifrare (d):");
+        System.out.print("\n");
+        funzioni.input();
+        String cifdef = null;
+        if (input.equals("c")){
+            cifdef = "cifrata";
+        }else if (input.equals("d")){
+            cifdef = "decifrata";
+            k = -k;
+        }else{
+            System.out.print("Non capisco. Ricomincio");
+            funzioni.cesare();
+        }
 
         String finale = null;
         String part = "";
@@ -435,7 +457,68 @@ class funzioni {
         }
 
         System.out.print("\n");
-        System.out.println("La frase cifrata con k=" + k + " è: \"" + finale + "\"");
+        System.out.println("La frase " + cifdef + " con k=" + k + " è: \"" + finale + "\"");
+
+        setup.fine();
+    }
+
+    static void vigenere() {
+        System.out.print("\n");
+        System.out.print("Digita una frase:");
+        System.out.print("\n");
+        funzioni.input();
+        String frase = input;
+
+        System.out.print("\n");
+        System.out.print("Inserisci la parola k:");
+        System.out.print("\n");
+        funzioni.input();
+        String k = input;
+
+        System.out.print("\n");
+        System.out.print("Scegli se cifrare (c) o decifrare (d):");
+        System.out.print("\n");
+        funzioni.input();
+        String cifdef = null;
+        boolean c = false;
+        if (input.equals("c")){
+            cifdef = "cifrata";
+            c = true;
+        }else if (input.equals("d")){
+            cifdef = "decifrata";
+            c = false;
+        }else{
+            System.out.print("Non capisco. Ricomincio");
+            funzioni.vigenere();
+        }
+
+        String finale = null;
+        String part = "";
+        int newascii = 0;
+        int p=0;
+
+        for (int f = 0; f < frase.length(); f++) {
+            char f_character = frase.charAt(f);
+            char p_character = k.charAt(p);
+            int f_ascii = (int) f_character;
+            int p_ascii = ((int) p_character) - 96;
+            if (c){
+                newascii = f_ascii + p_ascii;
+            }else{
+                newascii = f_ascii - p_ascii;
+            }
+            char l = (char)newascii;
+            // String l = Character.toString(newascii);
+            finale = (part + l);
+            part = finale;
+            p++;
+            if (p >= k.length()){
+                p=0;
+            }
+        }
+
+        System.out.print("\n");
+        System.out.println("La frase " + cifdef + " con k=\"" + k + "\" è: \"" + finale + "\"");
 
         setup.fine();
     }
