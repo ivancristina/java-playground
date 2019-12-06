@@ -14,6 +14,7 @@ public class program {      // classe principale
         System.out.println("Funzioni base Java di Ivan Cristina");
         System.out.println("***********************************");
         setup.help();   // Richiama funzione help in classe setup
+
     }
 }
 
@@ -23,18 +24,14 @@ class setup {
     // static per essere chiamabili in tutta la classe;
     // final a causa dello switch che necessita di variabili costanti
     private static final String funz1 = "print";
-    private static final String funz2 = "addizione";
-    private static final String funz3 = "sottrazione";
-    private static final String funz4 = "moltiplicazione";
-    private static final String funz5 = "divisione";
-    private static final String funz6 = "console";
-    private static final String funz7 = "ifcondititon";
-    private static final String funz8 = "compara";
-    private static final String funz9 = "primo";
-    private static final String funz10 = "rand_array";
-    private static final String funz11 = "log_curve";
-    private static final String funz12 = "cesare";
-    private static final String funz13 = "vigenere";
+    private static final String funz2 = "operations";
+    private static final String funz3 = "console";
+    private static final String funz4 = "ifcondititon";
+    private static final String funz5 = "primo";
+    private static final String funz6 = "rand_array";
+    private static final String funz7 = "log_curve";
+    private static final String funz8 = "cesare";
+    private static final String funz9 = "vigenere";
 
     private static final String funze = "esci";
 
@@ -47,25 +44,21 @@ class setup {
         System.out.print("\n");
         // Eventualmente fisserò numero di spazi tramite differenza lenght parole
         System.out.println("1:  " + funz1 + spazi.substring(0, spazi.length() - funz1.length()) + "Test di print");
-        System.out.println("2:  " + funz2 + spazi.substring(0, spazi.length() - funz2.length()) + "Addizione");
-        System.out.println("3:  " + funz3 + spazi.substring(0, spazi.length() - funz3.length()) + "Sottrazione");
-        System.out.println("4:  " + funz4 + spazi.substring(0, spazi.length() - funz4.length()) + "Moltiplicazione");
-        System.out.println("5:  " + funz5 + spazi.substring(0, spazi.length() - funz5.length()) + "Divisione");
-        System.out.println("6:  " + funz6 + spazi.substring(0, spazi.length() - funz6.length()) + "RW Console");
-        System.out.println("7:  " + funz7 + spazi.substring(0, spazi.length() - funz7.length()) + "Esegui una condizione SE");
-        System.out.println("8:  " + funz8 + spazi.substring(0, spazi.length() - funz8.length()) + "Compara due numeri");
-        System.out.println("9:  " + funz9 + spazi.substring(0, spazi.length() - funz9.length()) + "Verifica numero primo");
-        System.out.println("10: " + funz10 + spazi.substring(0, spazi.length() - funz10.length()) + "Lancia una moneta");
-        System.out.println("11: " + funz11 + spazi.substring(0, spazi.length() - funz11.length()) + "Curva logaritmica");
-        System.out.println("12: " + funz12 + spazi.substring(0, spazi.length() - funz12.length()) + "Cifrario di Cesare");
-        System.out.println("13: " + funz13 + spazi.substring(0, spazi.length() - funz13.length()) + "Cifrario di Vigenere");
+        System.out.println("2:  " + funz2 + spazi.substring(0, spazi.length() - funz2.length()) + "Operazioni con due valori");
+        System.out.println("3:  " + funz3 + spazi.substring(0, spazi.length() - funz3.length()) + "RW Console");
+        System.out.println("4:  " + funz4 + spazi.substring(0, spazi.length() - funz4.length()) + "Esegui una condizione SE");
+        System.out.println("5:  " + funz5 + spazi.substring(0, spazi.length() - funz5.length()) + "Verifica numero primo");
+        System.out.println("6:  " + funz6 + spazi.substring(0, spazi.length() - funz6.length()) + "Lancia una moneta");
+        System.out.println("7:  " + funz7 + spazi.substring(0, spazi.length() - funz7.length()) + "Curva logaritmica");
+        System.out.println("8:  " + funz8 + spazi.substring(0, spazi.length() - funz8.length()) + "Cifrario di Cesare");
+        System.out.println("9:  " + funz9 + spazi.substring(0, spazi.length() - funz9.length()) + "Cifrario di Vigenere");
 
         System.out.println("E:  " + funze + spazi.substring(0, spazi.length() - funze.length()) + "Chiudi il programma");
         System.out.print("\n");
         setup.menu();
     }
 
-    static void menu() {
+    private static void menu() {
 
         System.out.println("Scegli uno dei menu, tramite numero o nome funzione:");
         System.out.print("\n");
@@ -117,56 +110,36 @@ class setup {
             case funz3:
             case "3":
                 System.out.println("Apro la funzione: " + funz3);
-                funzioni.sottrazione();
+                funzioni.console();
                 break;
             case funz4:
             case "4":
                 System.out.println("Apro la funzione: " + funz4);
-                funzioni.moltiplicazione();
+                funzioni.ifcondition();
                 break;
             case funz5:
             case "5":
                 System.out.println("Apro la funzione: " + funz5);
-                funzioni.divisione();
+                funzioni.primo();
                 break;
             case funz6:
             case "6":
                 System.out.println("Apro la funzione: " + funz6);
-                funzioni.console();
+                funzioni.rand_array();
                 break;
             case funz7:
             case "7":
                 System.out.println("Apro la funzione: " + funz7);
-                funzioni.ifcondition();
+                funzioni.log_curve();
                 break;
             case funz8:
             case "8":
                 System.out.println("Apro la funzione: " + funz8);
-                funzioni.compara();
+                funzioni.cesare();
                 break;
             case funz9:
             case "9":
                 System.out.println("Apro la funzione: " + funz9);
-                funzioni.primo();
-                break;
-            case funz10:
-            case "10":
-                System.out.println("Apro la funzione: " + funz10);
-                funzioni.rand_array();
-                break;
-            case funz11:
-            case "11":
-                System.out.println("Apro la funzione: " + funz11);
-                funzioni.log_curve();
-                break;
-            case funz12:
-            case "12":
-                System.out.println("Apro la funzione: " + funz12);
-                funzioni.cesare();
-                break;
-            case funz13:
-            case "13":
-                System.out.println("Apro la funzione: " + funz13);
                 funzioni.vigenere();
                 break;
             case funze:
@@ -208,7 +181,7 @@ class setup {
         }
     }
 
-    static void esci() {
+    private static void esci() {
 
         System.out.println("Esco dal programma");
         System.out.println("\"Let me sleep.\" - Al Pacino");
@@ -234,42 +207,34 @@ class funzioni {
     static void addizione() {
         funzioni.read();
 
-        double s = x + y;
+        double sum = x + y;
+        double dif = x - y;    // Also x ^ y
+        double mol = x * y;
+        int div = (int) (x / y);
+        int rst = (int) (x % y);
+        double pwr = Math.pow(x, y);  // Power should be a double, but I want it as an int
+        double log = (Math.log(x) / (Math.log(y))); // Logarithm of x to the base of y
 
-        System.out.println("Somma: di " + x + " e " + y +" risulta " + s + "!");
+        System.out.print("\n");
+        System.out.print("X: " + x + " è ");
+        if (x>0) System.out.println("positivo!");
+        else System.out.println("negativo!");
+        System.out.print("Y: " + y + " è ");
+        if (y>0) System.out.println("positivo!");
+        else System.out.println("negativo!");
 
-        setup.fine();
+        System.out.print("X (" + x + ") è ");
+        if (x>y) System.out.print("maggiore");
+        else System.out.print("minore");
+        System.out.println(" di Y (" + y + ")!");
 
-    }
+        System.out.println(x + " plus " + y + " is " + sum);
+        System.out.println(x + " minus " + y + " is " + dif);
+        System.out.println(x + " times " + y + " is " + mol);
+        System.out.println(x + " divided by " + y + " is " + div + ". The rest is " + rst + ". Exact result is " + (x/y));
+        System.out.println(x + " to the power of " + y + " is " + pwr);
+        System.out.println("Logarithm of " + x + " in base " + y + " - log"+x+"("+y+") - is " + log);
 
-    static void sottrazione() {
-        funzioni.read();
-
-        double s = x - y;
-
-        System.out.println("Sottrazione: di " + x + " e " + y +" risulta " + s + "!");
-        setup.fine();
-
-    }
-
-    static void moltiplicazione() {
-        funzioni.read();
-
-        double s = x * y;
-
-        System.out.println("Moltiplicazione: di " + x + " e " + y +" risulta " + s + "!");
-        setup.fine();
-
-    }
-
-    static void divisione() {
-        funzioni.read();
-
-        double s = x / y;
-        int t = (int) (x / y);
-        int resto = (int) (x % y);
-
-        System.out.println("Divisione: di " + x + " e " + y +" risulta " + s + ", oppure " + t + " con resto di " + resto + "!");
         setup.fine();
 
     }
@@ -284,6 +249,7 @@ class funzioni {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        assert input != null;
         System.out.println("Hai scritto \"" + input + "\"");            // Rilegge il valore
         System.out.println("In maiuscolo: " + input.toUpperCase() );    // Maiuscolo
         System.out.println("In minuscolo: " + input.toLowerCase() );    // Minuscolo
@@ -321,27 +287,6 @@ class funzioni {
         }
         setup.fine();
 
-    }
-
-    static void compara() {
-        funzioni.read();
-
-        if (x>y){
-            System.out.println("Comparazione: " + x + " è maggiore di " + y + "!");
-        }else{
-            System.out.println("Comparazione: " + x + " è minore di " + y + "!");
-        }
-        if (x>0){
-            System.out.println("X: " + x + " è positivo!");
-        }else{
-            System.out.println("X: " + x + " è negativo!");
-        }
-        if (y>0){
-            System.out.println("Y: " + y + " è positivo!");
-        }else{
-            System.out.println("Y: " + y + " è negativo!");
-        }
-        setup.fine();
     }
 
     static void primo() {
@@ -502,11 +447,8 @@ class funzioni {
             char p_character = k.charAt(p);
             int f_ascii = (int) f_character;
             int p_ascii = ((int) p_character) - 96;
-            if (c){
-                newascii = f_ascii + p_ascii;
-            }else{
-                newascii = f_ascii - p_ascii;
-            }
+            if (c) newascii = f_ascii + p_ascii;
+            else newascii = f_ascii - p_ascii;
             char l = (char)newascii;
             // String l = Character.toString(newascii);
             finale = (part + l);
@@ -523,17 +465,18 @@ class funzioni {
         setup.fine();
     }
 
-    public static void input() {
+    private static void input() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             input = reader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        assert null != input;
 
     }
 
-    public static void read() {
+    private static void read() {
         System.out.print("\n");     // A causa della chiamata della funzione in switch
 
         // X
